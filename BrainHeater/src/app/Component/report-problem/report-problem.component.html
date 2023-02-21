@@ -1,0 +1,81 @@
+<div class="mt-5 text-center">
+  <div>
+    <span
+      ><a type="button" value="Go back!" onclick="history.back()"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="46"
+          fill="currentColor"
+          class="bi bi-arrow-left-circle"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"
+          /></svg
+      ></a>
+
+      <h1 class="mt-2 text-center">Report Problem</h1></span
+    >
+  </div>
+  <p class="text-sm-left" style="color: rgba(108, 107, 107, 0.92)">
+    Are you experiencing issues with your account or App performance? Write
+    everything in detail and submit now.Team BH will perform audit and fix
+    issues as quick as possible
+  </p>
+</div>
+<div class="container">
+  <h1>Report a Problem</h1>
+  <form [formGroup]="myForm" (ngSubmit)="postData()">
+    <label class="mb-2" style="color: rgba(108, 107, 107, 0.92)"
+      >Select a Category</label
+    >
+    <select
+      class="form-select form-control"
+      aria-label="Default select example"
+      formControlName="ReportType"
+    >
+      <option selected>Select Category</option>
+      <option *ngFor="let cat of Category">
+        {{ cat.name }}
+      </option>
+    </select>
+
+    <div class="form-group">
+      <label
+        class="mt-2 mb-2"
+        for="comment"
+        style="color: rgba(108, 107, 107, 0.92)"
+        >Explain Your issue in exact detail here:</label
+      >
+      <textarea
+        formControlName="issue"
+        class="form-control"
+        rows="5"
+        id="comment"
+        placeholder="Explain Your issue in exact detail her"
+      ></textarea>
+    </div>
+    <label
+      class="form-label"
+      for="customFile"
+      style="color: rgba(108, 107, 107, 0.92)"
+      >Attach screen Recording</label
+    >
+    <input
+      type="file"
+      name="att"
+      class="form-control"
+      id="customFile"
+      (change)="upVideo($event)"
+    />
+
+    <button
+      class="btn btn-primary mt-4 mb-4 container"
+      [disabled]="myForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
